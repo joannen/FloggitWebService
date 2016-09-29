@@ -1,0 +1,25 @@
+{
+  "name": "floggit-whiteboard",
+  "version": "1.0.0",
+  "description": "Digital whiteboard for saving post-its",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frodrok/FloggitWhiteboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frodrok/FloggitWhiteboard/issues"
+  },
+  "homepage": "https://github.com/frodrok/FloggitWhiteboard#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  }
+}
