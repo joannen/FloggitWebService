@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var routes = require('./routes');
+var routes = require('./controllers/routes/routes');
 var http = require('http').Server(app);
 // var io = require('socket-io');
 var jsonParser = require('body-parser').json;
