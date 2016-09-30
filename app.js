@@ -11,6 +11,23 @@ var logger = require('morgan');
 app.use(logger('dev'));
 app.use('/postits', routes);
 
+//catch 404 error, send to error handler
+app.use(function(res, res, next) {
+    var err = new Error('Not found');
+    err.status = 404;
+    next(err);
+});
+
+//Error handler
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+        error: {
+            message: err.message
+        }
+    });
+});
+
 // app.get('/', function(req, res) {
 //     res.status(200).send('hallå världen!');
 // });
