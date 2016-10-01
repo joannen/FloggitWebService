@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 var http = require('http').Server(app);
+var postItRepo = require('./repo/postit');
 // var io = require('socket-io');
-
+app.use(jsonParser)	;
 
 app.get('/', function(req, res) {
 	res.status(200).send('hallå världen!');
