@@ -12,8 +12,10 @@ module.exports.getAll = function() {
 
 module.exports.addOrUpdate = function(id, item) {
     var itemId;
+
     //add validation to see that postit is valid
     if (!item) {
+        item.timeCreated = new Date();
         item = id;
         itemId = generateId();
     } else {
