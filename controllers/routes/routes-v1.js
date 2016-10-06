@@ -3,12 +3,12 @@ var postitModel = require('../models/postit');
 
 var router = express.Router();
 
-// get a postit (accessed at GET http://localhost:8080/api/postits)
+// get a postit (accessed at GET http://localhost:8080/api/v1/postits)
 router.get('/postits', function(req, res) {
   res.json(postitModel.getAll());
 });
 
-// create a postit (accessed at POST http://localhost:8080/api/postits)
+// create a postit (accessed at POST http://localhost:8080/api/v1/postits)
 router.route('/postits')
   .post(function(req, res) {
     var newpostit = req.body;
@@ -18,7 +18,7 @@ router.route('/postits')
     });
   });
 
-// get the postit with id (accessed at PUT http://localhost:8080/api/postits/:id)
+// get the postit with id (accessed at PUT http://localhost:8080/api/v1/postits/:id)
 router.route('/postits/:id')
   .get(function(req, res) {
     var postitItem = postitModel.get(req.params.id);
@@ -29,7 +29,7 @@ router.route('/postits/:id')
       res.send();
     }
   })
-  // delete the postit with id (accessed at DELETE http://localhost:8080/api/postits/:id)
+  // delete the postit with id (accessed at DELETE http://localhost:8080/api/v1/postits/:id)
   .delete(function(req, res) {
     postitModel.delete(req.params.id);
     res.status(200);
@@ -38,7 +38,7 @@ router.route('/postits/:id')
     });
     res.send();
   })
-  // update the postit with id (accessed at PUT http://localhost:8080/api/postits/:id)
+  // update the postit with id (accessed at PUT http://localhost:8080/api/v1/postits/:id)
   .put(function(req, res) {
     var updateTodo = req.body;
       var id = req.params.id;
