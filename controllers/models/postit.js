@@ -12,13 +12,16 @@ module.exports.getAll = function() {
 
 module.exports.addOrUpdate = function(id, item) {
     var itemId;
+    var timeCreated;
     //add validation to see that postit is valid
     if (!item) {
+        timeCreated = new Date();
         item = id;
+        item.timeCreated = timeCreated.toLocaleString();
         itemId = generateId();
     } else {
         itemId = id;
-        
+
     }
     postIts.push({
         id: itemId,
