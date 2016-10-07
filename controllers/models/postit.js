@@ -20,6 +20,7 @@ module.exports.addOrUpdate = function(id, item) {
         itemId = generateId();
     } else {
         itemId = id;
+        
     }
     postIts.push({
         id: itemId,
@@ -34,7 +35,7 @@ module.exports.addOrUpdate = function(id, item) {
 };
 
 module.exports.get = function(id) {
-
+    id = parseInt(id);
     //add validation if item !exists
     var itemToReturn = postIts.filter(function(item) {
         return item.id === id;
@@ -43,10 +44,13 @@ module.exports.get = function(id) {
 };
 
 module.exports.delete = function(id) {
-
+    id = parseInt(id);
     //add validation if item !exists
     var deletedItem = postIts.filter(function(item) {
         return item.id === id;
+    });
+    postIts.pop({
+      id: id
     });
     return deletedItem;
 };
