@@ -43,15 +43,20 @@ module.exports.get = function(id) {
     });
     return itemToReturn;
 };
-
+//delete-method was not deleting
 module.exports.delete = function(id) {
+
     id = parseInt(id);
     //add validation if item !exists
     var deletedItem = postIts.filter(function(item) {
         return item.id === id;
     });
-    postIts.pop({
-      id: id
+    postIts = postIts.filter(function(item){
+      return item.id !== id;
     });
+    // postIts.pop({
+    //   id: id
+    // });
     return deletedItem;
+
 };
