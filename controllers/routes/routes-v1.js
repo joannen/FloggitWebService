@@ -36,7 +36,7 @@ router.route('/postits/:id')
     res.json({
       message: 'Successfully deleted'
     });
-    res.send();
+    // res.send();
   })
   // update the postit with id (accessed at PUT http://localhost:8080/api/v1/postits/:id)
   .put(function(req, res) {
