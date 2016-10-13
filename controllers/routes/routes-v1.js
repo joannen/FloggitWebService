@@ -40,16 +40,16 @@ router.route('/postits/:id')
   })
   // update the postit with id (accessed at PUT http://localhost:8080/api/v1/postits/:id)
   .put(function(req, res) {
-    var updateTodo = req.body;
+    var updatePostit = req.body;
       var id = req.params.id;
       id = parseInt(id);
       if (postitModel.get(id)) {
         postitModel.delete(id);
-        postitModel.addOrUpdate(id, updateTodo);
+        postitModel.addOrUpdate(id, updatePostit);
         res.status(200);
         res.send();
       } else {
-        postitModel.addOrUpdate(id, updateTodo);
+        postitModel.addOrUpdate(id, updatePostit);
         res.status(201);
         res.json({
           id: id
