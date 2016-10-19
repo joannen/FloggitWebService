@@ -1,13 +1,19 @@
 var postIts = [];
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
 
 //använda node-uuid?
 function generateId() {
   return +(new Date());
 }
-
-module.exports.getAll = function () {
-  //add validation to handle if list is empty
-  return postIts;
+function update() {
+  console.log('UPDATED', postIts);
+  eventEmitter.emit('updated', postIts);
+}
+module.exports.getAll = function() {
+    //add validation to handle if list is empty
+    return postIts;
 };
 
 module.exports.addOrUpdate = function (id, item) {
@@ -33,6 +39,7 @@ module.exports.addOrUpdate = function (id, item) {
       notes: item.notes
     }
   });
+  update();
   return itemId;
 };
 
@@ -55,8 +62,15 @@ module.exports.delete = function (id) {
   postIts = postIts.filter(function (item) {
     return item.id !== id;
   });
-  // postIts.pop({
-  //   id: id
-  // });
+
+  update();
   return deletedItem;
+};
+
+module.exports.on = function(name, func){
+  eventEmitter.on(name, func);
+};
+
+module.exports.removeListener= function(name, func){
+  eventEmitter.removeListener(name, func);
 };
