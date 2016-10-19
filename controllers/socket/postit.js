@@ -1,15 +1,15 @@
 var postitModel = require('../models/postit');
 
 module.exports = function(socket){
-  function onChange(postIts){
+
+  //get all on connection
+  socket.emit('postit-update', postitModel.getAll());
+
+  postitModel.on('updated', function updatePostits(postIts){
     socket.emit('postit-update', postIts);
-  }
+  });
 
-  onChange(postitModel.getAll());
-
-  postitModel.on('updated', onChange);
-
-  socket.on('disconnect', function() {
-    postitModel.removeListener('updated', onChange);
-   });
+  // socket.on('disconnect', function() {
+  //   postitModel.removeListener('updated', onChange);
+  //  });
 };

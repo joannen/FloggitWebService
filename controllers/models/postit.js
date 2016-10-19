@@ -8,6 +8,7 @@ function generateId() {
   return +(new Date());
 }
 function update() {
+  console.log('UPDATED', postIts);
   eventEmitter.emit('updated', postIts);
 }
 module.exports.getAll = function() {
@@ -61,9 +62,7 @@ module.exports.delete = function (id) {
   postIts = postIts.filter(function (item) {
     return item.id !== id;
   });
-  // postIts.pop({
-  //   id: id
-  // });
+
   update();
   return deletedItem;
 };
