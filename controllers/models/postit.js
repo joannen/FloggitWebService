@@ -13,7 +13,18 @@ function update() {
 }
 module.exports.getAll = function() {
     //add validation to handle if list is empty
-    return postIts;
+    return postIts.sort(function(one, two) {
+        if (one.id > two.id) {
+          return -1;
+        }
+
+        if (one.id < two.id) {
+          return 1;
+        }
+
+        return 0;
+      });
+
 };
 
 module.exports.addOrUpdate = function (id, item) {
