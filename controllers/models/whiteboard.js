@@ -109,6 +109,7 @@ module.exports.deletePostit = function (whiteboardId, id) {
   whiteboards[index].whiteboard.postIts = whiteboards[index].whiteboard.postIts.filter(function (item) {
     return item.id !== id;
   });
+  update();
   console.log('DELETED ITEM' + deletedItem.id);
   return deletedItem;
 };
